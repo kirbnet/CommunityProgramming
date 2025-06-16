@@ -1,0 +1,116 @@
+:root {
+    --themecolor: #a57865;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a {
+    color: var(--themecolor);
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures container takes at least full viewport height */
+}
+
+/* Header for navigation, current week, etc. */
+.header {
+    background-color: var(--themecolor);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* Main content area for the calendar */
+.main-content {
+    flex-grow: 1; /* Allows main content to take up available space */
+    display: flex;
+    flex-direction: column; /* Default to vertical stacking for mobile */
+    padding: 10px;
+}
+
+/* Day column styling */
+.day-column {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between days on mobile */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden; /* Ensures content inside doesn't spill */
+}
+
+.day-header {
+    background-color: #e9ecef;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.events {
+    padding: 10px;
+    min-height: 80px; /* Example min-height for empty days */
+}
+
+.event-item {
+    background-color: #f8f9fa;
+    border: 1px solid #cce5ff;
+    border-left: 5px solid var(--themecolor);
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* Desktop view: CSS Grid for calendar layout */
+@media (min-width: 768px) {
+    .main-content {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr); /* 7 equal columns for days */
+        gap: 10px; /* Space between day columns */
+        padding: 20px;
+    }
+
+    .day-column {
+        margin-bottom: 0; /* Remove margin between days on desktop */
+        display: flex; /* Make day column a flex container */
+        flex-direction: column; /* Stack header and events vertically */
+    }
+
+    .events {
+        flex-grow: 1; /* Allow events area to fill available height */
+        overflow-y: auto; /* Enable scrolling for events if content overflows */
+    }
+}
+
+/* Optional: Adjustments for very large screens if needed */
+@media (min-width: 1200px) {
+    .main-content {
+        max-width: 1200px; /* Cap width for very large screens */
+        margin: 0 auto; /* Center the calendar */
+    }
+}
