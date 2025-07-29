@@ -1,19 +1,41 @@
 :root {
-    --themecolor: #a57865;
+  /* --- Light Mode Colors --- */
+  --light-background: #F8F5F2; /* A soft, warm off-white, like a very light cream or linen */
+  --light-text-primary: #3B302C; /* A deep, rich brown, a slightly darker version of Mocha Mousse */
+  --light-accent-mocha: #A47864; /* PANTONE 17-1230 Mocha Mousse */
+
+  /* --- Dark Mode Colors --- */
+  --dark-background: #2C2622; /* A very dark, rich brown, almost black */
+  --dark-text-primary: #EAE6E0; /* A soft, very light off-white for good contrast */
+  --dark-accent-mocha: #A47864; /* PANTONE 17-1230 Mocha Mousse (same for emphasis) */
+
+  /* Default values, these will be overridden by media query */
+  --primary-background: var(--light-background);
+  --text-primary: var(--light-text-primary);
+  --accent-mocha: var(--light-accent-mocha);
+
+  --complement: #648AA4;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-background: var(--dark-background);
+        --text-primary: var(--dark-text-primary);
+        --accent-mocha: var(--dark-accent-mocha);
+    }
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--primary-background);
+    color: var(--text-primary);
 }
 
 a {
-    color: var(--themecolor);
-    font-size: larger;
+    color: var(--text-primary);
+    font-size: 2em; 
 }
 .container {
     display: flex;
@@ -23,8 +45,8 @@ a {
 
 /* Header for navigation, current week, etc. */
 .header {
-    background-color: var(--themecolor);
-    color: white;
+    background-color: var(--accent-mocha);
+    color: var(--primary-background);
     padding: 15px 20px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -45,8 +67,8 @@ a {
 
 /* Day column styling */
 .day-column {
-    background-color: white;
-    border: 1px solid #ddd;
+    background-color: var(--primary-background);
+    border: 1px solid var(--text-primary);
     border-radius: 5px;
     margin-bottom: 10px; /* Space between days on mobile */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -54,11 +76,11 @@ a {
 }
 
 .day-header {
-    background-color: #e9ecef;
+    background-color: var(--complement);
     padding: 10px;
     font-weight: bold;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--text-primary);
 }
 
 .events {
@@ -67,9 +89,9 @@ a {
 }
 
 .event-item {
-    background-color: #f8f9fa;
-    border: 1px solid #cce5ff;
-    border-left: 5px solid var(--themecolor);
+    background-color: var(--accent-mocha);
+    border: 1px solid var(--text-primary);
+    border-left: 5px solid var(--complement);
     padding: 8px;
     margin-bottom: 5px;
     border-radius: 3px;
@@ -79,8 +101,8 @@ a {
 
 /* Footer */
 .footer {
-    background-color: #343a40;
-    color: white;
+    background-color: var(--complement);
+    color: var(--primary-background);
     padding: 10px 10px;
     text-align: center;
     font-size: 0.9em;
